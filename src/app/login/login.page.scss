@@ -1,0 +1,81 @@
+  .login-content {
+      background: transparent;
+    
+      
+   
+      .logo-row {
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+   
+      .login-box {
+        background: rgb(253, 253, 253);
+        padding: 20px 20px 0px 20px;
+        margin-top: 30px;
+        border-radius: 10px;
+      }
+   
+      ion-row {
+         align-items: center;
+         text-align: center;
+       }
+   
+       ion-item {
+           border-radius: 30px !important;
+           padding-left: 30px !important;
+           font-size: 0.9em;
+           margin-bottom: 10px;
+           border: 2px solid #1a6df2;
+           border-bottom: 0px !important;
+           box-shadow: none !important;
+       }
+   
+       .forgot-col {
+         margin: 0px 16px 0px 16px;
+         padding-bottom: 20px;
+       }
+   
+       .item-inner {
+         border-bottom-color: #1a6df2 !important;
+         box-shadow: none !important;
+       }
+   
+       .submit-btn {
+         background: #1a6df2;
+         border-radius: 30px !important;
+         border: 1px solid #ffffff;
+         padding: 1.0em 3.0em 1.0em 3.0em;
+         color: white;
+         outline: none;
+       }
+   
+       .forgot-btn {
+         color: #000000;
+         font-size: 0.8em;
+         background: transparent;
+       }
+       input:focus { 
+        background-color: yellow;
+      }
+      .form-col{
+        max-width: 350px;
+      }
+      .extra-col{
+        height: 100%;
+        width: 100%;
+      }
+      
+        @media screen and (max-width: 600px) {
+          .extra-col{
+            visibility: hidden;
+            clear: both;
+            float: left;
+            margin: 10px auto 5px 20px;
+            width: 28%;
+            display: none;
+          }
+        }
+      
+      
+    }
+  

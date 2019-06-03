@@ -3,6 +3,11 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-background-color:linear-gradient(#4889f0, #1a6df2);
+  ion-content *{
+    --ion-background-color:#ffffff;
+  }
+  
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -75,3 +80,10 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+$grid-breakpoints: (
+ xs: 0, // Phone (0px - 575px)
+ sm: 576px, // Phablet (576px - 767px)
+ md: 768px, // Tablet vertical (768px - 991px)
+ lg: 992px // Tablet horizontal, Desktop (992px and above)
+);
