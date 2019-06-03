@@ -21,13 +21,13 @@
        }
    
        ion-item {
-           border-radius: 30px !important;
+           border-radius: 10px !important;
            padding-left: 30px !important;
            font-size: 0.9em;
            margin-bottom: 10px;
-           border: 2px solid #1a6df2;
-           border-bottom: 0px !important;
-           box-shadow: none !important;
+           border: none;
+           //border-bottom: 0.5spx solid #263238;
+           box-shadow: 0.5px 0.5px 0.5px #263238;
        }
    
        .forgot-col {
@@ -36,12 +36,12 @@
        }
    
        .item-inner {
-         border-bottom-color: #1a6df2 !important;
+         border-bottom-color: #263238 !important;
          box-shadow: none !important;
        }
    
        .submit-btn {
-         background: #1a6df2;
+         background: #263238;
          border-radius: 30px !important;
          border: 1px solid #ffffff;
          padding: 1.0em 3.0em 1.0em 3.0em;
@@ -60,22 +60,6 @@
       .form-col{
         max-width: 350px;
       }
-      .extra-col{
-        height: 100%;
-        width: 100%;
-      }
-      
-        @media screen and (max-width: 600px) {
-          .extra-col{
-            visibility: hidden;
-            clear: both;
-            float: left;
-            margin: 10px auto 5px 20px;
-            width: 28%;
-            display: none;
-          }
-        }
-      
       
     }
   

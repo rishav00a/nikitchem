@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,7 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
+  constructor(public menu: MenuController,) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
@@ -31,6 +32,10 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.menu.enable(true);
   }
   // add back when alpha.4 is out
   // navigate(item) {
