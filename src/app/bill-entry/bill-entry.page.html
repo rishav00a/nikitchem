@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bill Entry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="row" justify-content-center>
+
+    <form class="vldform vldauth" action="login.php" method="POST">
+      <h1>Bill Entry</h1>
+
+
+      <ion-list class="vldform__textbox">
+
+
+  <ion-item  lines="none">
+    <ion-label position="floating">Client Type</ion-label>
+    <ion-select value="" okText="Select" cancelText="Dismiss" required>
+      <ion-select-option value="">Select One</ion-select-option>
+        <ion-select-option value="Dealer">Dealer</ion-select-option>
+      <ion-select-option value="Distributor">Distributor</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+  <ion-item  lines="none"><ion-label  position="floating">Responsible Person</ion-label>
+  <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Responsible Person" required></ion-input>
+  </ion-item>
+
+
+  <ion-list class="vldform__textbox">
+  <ion-item  lines="none">
+  <ion-label position="floating">Payment Type</ion-label>
+  <ion-select value="" okText="Select" cancelText="Dismiss" required>
+  <ion-select-option value="">Select One</ion-select-option>
+    <ion-select-option value="Advance">Advance</ion-select-option>
+  <ion-select-option value="45 Days">45 Days</ion-select-option>
+<ion-select-option value="60 Days">60 Days</ion-select-option>
+  </ion-select>
+  </ion-item>
+  </ion-list>
+
+  <ion-item  lines="none"><ion-label  position="floating">Bill Date</ion-label>
+    <ion-input class="vldform__textbox" type="date" name="responsible" placeholder="Bill Date" required></ion-input></ion-item>
+  <ion-item  lines="none"><ion-label  position="floating">Bill No.</ion-label>
+    <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Bill No." required></ion-input></ion-item>
+  <ion-item  lines="none"><ion-label  position="floating">Party Name</ion-label>
+    <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Party Name" required></ion-input></ion-item>
+  <ion-item  lines="none"><ion-label  position="floating">Amount</ion-label>
+    <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Amount" required></ion-input></ion-item>
+  <ion-item  lines="none"><ion-label  position="floating">GST</ion-label>
+    <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="GST" readonly required></ion-input></ion-item>
+  <ion-item  lines="none"><ion-label  position="floating">Advance Amount</ion-label>
+    <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Advance Amount" required></ion-input></ion-item>
+
+    <ion-item  lines="none"><ion-label  position="floating">Discount on Advance</ion-label>
+      <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Discount on Advance" readonly required></ion-input></ion-item>
+      <ion-item  lines="none"><ion-label  position="floating">Amount after Discount</ion-label>
+        <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Amount after Discount" readonly required></ion-input></ion-item>
+        <ion-item  lines="none"><ion-label  position="floating">Due/Pending Amount</ion-label>
+          <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Due/Pending Amount" readonly required></ion-input></ion-item>
+
+          <ion-item  lines="none"><ion-label  position="floating">Due Date</ion-label>
+            <ion-input class="vldform__textbox" type="date" name="responsible" placeholder="Due Date"  required></ion-input></ion-item>
+            <ion-item  lines="none"><ion-label  position="floating">Cheque No</ion-label>
+              <ion-input class="vldform__textbox" type="text" name="responsible" placeholder="Cheque No"  required></ion-input></ion-item>
+              <ion-item  lines="none"><ion-label  position="floating">Cheque Date</ion-label>
+                <ion-input class="vldform__textbox" type="date" name="responsible" placeholder="Cheque Date"  required></ion-input></ion-item>
+
+
+
+      <input class="vldform__button" type="submit" (click)="loading()" value="Enter">
+
+    </form>
+    </ion-row>
+    </ion-grid>
+    </ion-content>

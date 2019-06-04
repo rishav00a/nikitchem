@@ -1,7 +1,7 @@
 <ion-content class="login-content" padding>
   <ion-grid>
     <ion-row class="main-row" justify-content-center>
-      
+
       <ion-col class="form-col">
           <ion-row class="logo-row">
               <ion-col></ion-col>
@@ -15,21 +15,21 @@
                 <ion-row>
                   <ion-col>
                     <ion-list inset>
-                      
+
                       <ion-item lines="none">
                         <ion-label position="floating">Username</ion-label>
                         <ion-input type="text" formControlName="username" [(ngModel)]="user.username" required></ion-input>
                       </ion-item>
-                      
+
                       <ion-item lines="none">
                           <ion-label position="floating">Password</ion-label>
                         <ion-input type="password" formControlName="password" [(ngModel)]="user.password" required></ion-input>
                       </ion-item>
-                      
+
                     </ion-list>
                   </ion-col>
                 </ion-row>
-                
+
                 <ion-row>
                   <ion-col class="forgot-col">
                     <button ion-button class="submit-btn" full type="submit" (click)="login()">Login</button>
@@ -40,11 +40,11 @@
                     <button ion-button class="forgot-btn" block clear>Forgot Password ?</button>
                   </ion-col>
                 </ion-row>
-                
+
               </form>
             </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
 </ion-content>

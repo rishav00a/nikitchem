@@ -14,7 +14,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent, ],
   entryComponents: [],
   imports: [
     BrowserModule,
