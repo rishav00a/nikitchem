@@ -1,0 +1,11 @@
+<ion-card class="profile-item" justify-content-center>
+    <ion-card-header *ngIf="usprofavl">
+     
+      <div class="profile-picture big-profile-picture">
+      <ion-img [src]="userprof.profileinfo.profile_pic"></ion-img>
+      </div>
+      <ion-card-subtitle>{{userprof.profileinfo.role}}</ion-card-subtitle>
+      <ion-card-title>{{userprof.profileinfo.first_name}} {{userprof.profileinfo.last_name}}</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>

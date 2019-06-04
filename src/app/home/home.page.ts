@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthenticationService } from '../_services';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,14 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor(public menu: MenuController,) {}
+  public userprof ={};
+  constructor(public menu: MenuController,
+              private authenticationService: AuthenticationService,
+    ) {
+    this.authenticationService.CurrentUserProfile.subscribe( value => {
+      this.userprof=value?value:{};
+    });  
+  }
 
   ionViewWillEnter() {
     this.menu.enable(true);

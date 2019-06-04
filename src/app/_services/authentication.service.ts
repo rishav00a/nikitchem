@@ -6,22 +6,30 @@ import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { environment } from '../../environments/environment';
 
 
-import { User } from '../_models';
+import { User,UserProfileInfo } from '../_models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
+    public currentUserSubject: BehaviorSubject<User>;
+    public CurrentUserProfile: BehaviorSubject<UserProfileInfo>;
     public currentUser: Observable<User>;
+    public _userprofile: Observable<UserProfileInfo>;
+
     apiURL = environment.apiURL;
 
     constructor(private router: Router,private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-
         this.currentUser = this.currentUserSubject.asObservable();
+        this.CurrentUserProfile = new BehaviorSubject<UserProfileInfo>(JSON.parse(localStorage.getItem('profile_info')));
+        this._userprofile = this.CurrentUserProfile.asObservable();
     }
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
+    }
+
+    public get currentUserProfileValue(): UserProfileInfo {
+        return this.CurrentUserProfile.value;
     }
 
     login(username: string, password: string) {
@@ -39,10 +47,23 @@ export class AuthenticationService {
 
     }
 
+   
+   
+    getProfileInfo(){
+        return this.http.get<any>(this.apiURL+`api/auth/profile_info`)
+        .pipe(map(userprofileinfo => {
+            localStorage.setItem('profile_info', JSON.stringify(userprofileinfo));
+            this.CurrentUserProfile.next(userprofileinfo);
+            return userprofileinfo;
+        }));
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+        localStorage.removeItem('profile_info');
+        this.CurrentUserProfile.next(null);
         this.router.navigate(['/login']);
     }
 

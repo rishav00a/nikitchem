@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
-import { LoadingController, ToastController } from '@ionic/angular';
-
+import { LoadingController, ToastController,Events } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,17 +14,20 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
     public user: any;
-    public nextURL = "dashboard/";
-    returnUrl: string="dashboard/";
+    public nextURL = "/dashboard/";
+    returnUrl: string="/dashboard/";
     error = '';
-
+    
   constructor(public menu: MenuController,
               private _formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
               public toastController: ToastController,
+              public loadingController: LoadingController,
               private router: Router,
-              private _ngZone: NgZone) { }
+              private _ngZone: NgZone,
+              public events: Events
+              ) { }
   ionViewWillEnter() {
     this.menu.enable(false);
   }
@@ -47,7 +49,7 @@ export class LoginPage implements OnInit {
       this.nextURL =next;
     }
   });
-  console.log(this.authenticationService.currentUserValue);
+  
   if(this.authenticationService.currentUserValue)
   {
     this.router.navigate([this.returnUrl]);
@@ -57,18 +59,37 @@ export class LoginPage implements OnInit {
     
   }
 
-  login() {
-    //   this._userService.login({'username': this.user.username, 'password': this.user.password},this.nextURL);
-    // }
+  
+
+  async login() {
+    
+    const loading = await this.loadingController.create({
+      message: 'Please Wait',
+      duration: 20000
+    });
+      
+      await loading.present();
+    
       this.authenticationService.login(this.user.username, this.user.password)
           .pipe(first())
           .subscribe(
               data => {
-                  this._ngZone.run(() => {
-                    this.router.navigate([this.returnUrl]);
-                  });
+                this.authenticationService.getProfileInfo().subscribe(
+                  profiledata => {                    
+                    loading.dismiss();  
+                    this._ngZone.run(() => {
+                      this.router.navigate([this.returnUrl]);
+                    });
+                  },
+                  error => {
+                    loading.dismiss();  
+                    this.presentToast("Some Error Occured !!!");
+                      this.error = error;
+                  }
+                );
               },
               error => {
+                loading.dismiss();  
                 this.presentToast("Incorrect User or Password");
                   this.error = error;
               });

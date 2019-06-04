@@ -9,8 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { ProfileModule } from './profile/profile.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+
 
 @NgModule({
   declarations: [AppComponent,],
@@ -19,7 +20,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ProfileModule
   ],
   providers: [
     StatusBar,
