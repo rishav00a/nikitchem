@@ -39,5 +39,5 @@ export class UserProfileInfo {
 }
 
 export class BillEntryModel {
-    
+    ref_id:String;
 }
