@@ -8,13 +8,13 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public userprof ={};
+  public userprof;
   constructor(public menu: MenuController,
               private authenticationService: AuthenticationService,
     ) {
     this.authenticationService.CurrentUserProfile.subscribe( value => {
       this.userprof=value?value:{};
-    });  
+    });
   }
 
   ionViewWillEnter() {

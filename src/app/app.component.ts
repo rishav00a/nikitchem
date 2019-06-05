@@ -10,7 +10,7 @@ import { Events } from '@ionic/angular';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public userprof ={};
+  public userprof;
 
   public appPages = [
     {
@@ -28,10 +28,10 @@ export class AppComponent {
     public events: Events,
 
   ) {
-    this.initializeApp();  
+    this.initializeApp();
     this.authenticationService.CurrentUserProfile.subscribe( value => {
       this.userprof=value?value:{};
-    });  
+    });
   }
 
   initializeApp() {
