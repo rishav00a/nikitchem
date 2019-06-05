@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
@@ -62,11 +62,14 @@ export class LoginPage implements OnInit {
   
 
   async login() {
+
+    if(this.loginForm.valid)
+    {
     
-    const loading = await this.loadingController.create({
-      message: 'Please Wait',
-      duration: 20000
-    });
+      const loading = await this.loadingController.create({
+        message: 'Please Wait',
+        duration: 20000
+      });
       
       await loading.present();
     
@@ -93,8 +96,8 @@ export class LoginPage implements OnInit {
                 this.presentToast("Incorrect User or Password");
                   this.error = error;
               });
-
     }
+  }
     // refreshToken() {
     //   this._userService.refreshToken();
     // }

@@ -37,3 +37,7 @@ export class UserProfileInfo {
     menu_items: MenuItems[];
     tile_items: TileItems[];
 }
+
+export class BillEntryModel {
+    
+}
