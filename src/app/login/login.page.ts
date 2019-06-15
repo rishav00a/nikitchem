@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     public nextURL = "/dashboard/";
     returnUrl: string="/dashboard/";
     error = '';
-    
+
   constructor(public menu: MenuController,
               private _formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
@@ -49,50 +49,50 @@ export class LoginPage implements OnInit {
       this.nextURL =next;
     }
   });
-  
+
   if(this.authenticationService.currentUserValue)
   {
     this.router.navigate([this.returnUrl]);
   }
   // this.authenticationService.logout();
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
-    
+
   }
 
-  
+
 
   async login() {
 
     if(this.loginForm.valid)
     {
-    
+
       const loading = await this.loadingController.create({
         message: 'Please Wait',
         duration: 20000
       });
-      
+
       await loading.present();
-    
+
       this.authenticationService.login(this.user.username, this.user.password)
           .pipe(first())
           .subscribe(
               data => {
                 this.authenticationService.getProfileInfo().subscribe(
-                  profiledata => {                    
-                    loading.dismiss();  
+                  profiledata => {
+                    loading.dismiss();
                     this._ngZone.run(() => {
                       this.router.navigate([this.returnUrl]);
                     });
                   },
                   error => {
-                    loading.dismiss();  
+                    loading.dismiss();
                     this.presentToast("Some Error Occured !!!");
                       this.error = error;
                   }
                 );
               },
               error => {
-                loading.dismiss();  
+                loading.dismiss();
                 this.presentToast("Incorrect User or Password");
                   this.error = error;
               });

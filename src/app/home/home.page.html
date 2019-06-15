@@ -14,11 +14,11 @@
     <ion-row class="row" justify-content-center>
 
 
-        <ion-col class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let tile of userprof.tile_items">
+        <ion-col class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 col" *ngFor="let tile of userprof.tile_items">
 					<ion-card class="box-part text-center" href="{{tile.url}}">
 						<ion-card-header class="title" >
                 <ion-icon name="{{tile.icon}}"></ion-icon>
-							<h4>{{tile.label}}</h4>
+							<p>{{tile.label}}</p>
 
 						</ion-card-header>
 					 </ion-card>

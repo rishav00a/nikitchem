@@ -52,30 +52,30 @@
 
   <ion-item  lines="none"><ion-label  position="floating">Bill No.</ion-label>
     <ion-input class="vldform__textbox" type="text" formControlName="bill_no" placeholder="Bill No." required></ion-input></ion-item>
- 
-    
+
+
     <ion-item  lines="none"><ion-label  position="floating">Party Name</ion-label>
     <ion-input class="vldform__textbox" type="text" formControlName="party_name" placeholder="Party Name" required></ion-input></ion-item>
-  
+
     <ion-item  lines="none"><ion-label  position="floating">Amount</ion-label>
     <ion-input class="vldform__textbox" type="text" formControlName="amount" [(ngModel)]="billentry.amount" placeholder="Amount" required></ion-input></ion-item>
- 
+
     <ion-item  lines="none"><ion-label  position="floating">GST</ion-label>
     <ion-input class="vldform__textbox" type="text" value="{{gst}}" placeholder="GST" readonly></ion-input></ion-item>
-  
+
     <ion-item  lines="none"><ion-label  position="floating">Advance Amount</ion-label>
     <ion-input class="vldform__textbox" type="text" [(ngModel)]="billentry.advance_amount" formControlName="advance_amount" placeholder="Advance Amount"></ion-input></ion-item>
 
     <ion-item  lines="none"><ion-label  position="floating">Discount on Advance</ion-label>
     <ion-input class="vldform__textbox" type="text" value="{{discount}}" placeholder="Discount on Advance" readonly></ion-input></ion-item>
-      
-    <ion-item  lines="none"><ion-label  position="floating">Extra Discount</ion-label>        
+
+    <ion-item  lines="none"><ion-label  position="floating">Extra Discount</ion-label>
       <ion-input class="vldform__textbox" type="text" [(ngModel)]="billentry.extra_discount" formControlName="extra_discount" placeholder="Extra Discount" ></ion-input></ion-item>
-       
-      
-    <ion-item  lines="none"><ion-label  position="floating">Amount after Discount</ion-label>        
+
+
+    <ion-item  lines="none"><ion-label  position="floating">Amount after Discount</ion-label>
       <ion-input class="vldform__textbox" type="text" value="{{amount_after_discount}}" placeholder="Amount after Discount" readonly></ion-input></ion-item>
-        
+
     <ion-item  lines="none"><ion-label  position="floating">Due/Pending Amount</ion-label>
           <ion-input class="vldform__textbox" type="text" value="{{due_amount}}" placeholder="Due/Pending Amount" readonly></ion-input></ion-item>
 
@@ -83,7 +83,7 @@
             <ion-input class="vldform__textbox" type="date" formControlName="due_date" placeholder="Due Date"  required></ion-input></ion-item>
       <ion-item  lines="none"><ion-label  position="floating">Cheque No</ion-label>
               <ion-input class="vldform__textbox" type="text" formControlName="cheque_no"placeholder="Cheque No"></ion-input></ion-item>
-      
+
               <ion-item  lines="none"><ion-label  position="floating">Cheque Date</ion-label>
                 <ion-input class="vldform__textbox" type="date" formControlName="cheque_date" placeholder="Cheque Date"></ion-input></ion-item>
 

@@ -45,7 +45,7 @@ export class BillEntryPage implements OnInit {
 
     });
     this.billentry = {
-      
+
         client_type:"",
         responsible_person:"",
         advance_in_days:"0",
@@ -58,7 +58,7 @@ export class BillEntryPage implements OnInit {
         due_date:new Date(),
         cheque_no:"",
         cheque_date:new Date()
-        
+
     };
   }
 
@@ -67,7 +67,7 @@ export class BillEntryPage implements OnInit {
     this.billentry.amount="0";
     this.billentry.advance_amount=0;
     this.billentry.extra_discount=0;
-    this.billentryForm.reset(); 
+    this.billentryForm.reset();
   }
 
   get discount()
@@ -119,14 +119,14 @@ async presentAlert(header,subheader,msg) {
 
   if(this.billentryForm.valid)
   {
-    
+
     this._apiservice.postContactForm(this.billentryForm.value)
       .subscribe(data => {
         console.log(data);
-            loading.dismiss();  
-            this.presentAlert("Sucess!!!","Data Submitted Successfully","Refference id: "+data.ref_id); 
+            loading.dismiss();
+            this.presentAlert("Sucess!!!","Data Submitted Successfully","Refference id: "+data.ref_id);
             this.navCtrl.pop();
-          }        
+          }
         );
   }
  }
