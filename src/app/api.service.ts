@@ -17,5 +17,11 @@ export class ApiService {
     public postContactForm(formbody): Observable<BillEntryModel> {
       return this.http.post<BillEntryModel>(API_URL + 'api/salesman/billreceive/',formbody);
     }  
+    public postPaymentStatusForm(formbody){
+      return this.http.post(API_URL + 'api/salesman/payment_statusd/',formbody);
+    }
+    public postChequeReportForm(formbody){
+      return this.http.post(API_URL + 'api/salesman/cheque_reportd/',formbody);
+    }
 }
 

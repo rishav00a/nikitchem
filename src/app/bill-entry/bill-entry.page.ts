@@ -3,6 +3,7 @@ import { LoadingController, ToastController,Events,AlertController  } from '@ion
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuController, IonSlides,NavController } from '@ionic/angular';
 import {ApiService} from '../api.service';
+import { AuthenticationService } from '../_services';
 
 @Component({
   selector: 'app-bill-entry',
@@ -12,6 +13,7 @@ import {ApiService} from '../api.service';
 export class BillEntryPage implements OnInit {
   billentryForm: FormGroup;
   public billentry: any;
+  public userprof ={};
 
 
   constructor(
@@ -21,7 +23,8 @@ export class BillEntryPage implements OnInit {
       public toastController: ToastController,
       private _formBuilder: FormBuilder,
       private _apiservice: ApiService,
-      private navCtrl:NavController
+      private navCtrl:NavController,
+      private authenticationService: AuthenticationService
 
   ) { }
   ionViewWillEnter() {
@@ -29,9 +32,10 @@ export class BillEntryPage implements OnInit {
   }
   ngOnInit() {
 
+    this.userprof=this.authenticationService.currentUserProfileValue;
+
     this.billentryForm = this._formBuilder.group({
       client_type   : ['', [Validators.required]],//, Validators.email
-      responsible_person: ['', Validators.required],
       advance_in_days: ['', Validators.required],
       bill_date: ['', Validators.required],
       bill_no: [''],
@@ -43,13 +47,13 @@ export class BillEntryPage implements OnInit {
       cheque_no: [''],
       cheque_date: ['']
 
-    });
+    }); 
     this.billentry = {
 
         client_type:"",
-        responsible_person:"",
+        responsible_person:this.userprof,
         advance_in_days:"0",
-        bill_date: new Date(),
+        bill_date: new Date(), 
         bill_no:"",
         party_name:"",
         amount:"0",
@@ -98,16 +102,16 @@ async loading()
 
 }
 
-async presentAlert(header,subheader,msg) {
-   const alert = await this.alertController.create({
-     header: header,
-     subHeader: subheader,
-     message: msg,
-     buttons: ['OK']
-   });
+  async presentAlert(header,subheader,msg) {
+    const alert = await this.alertController.create({
+      header: header,
+      subHeader: subheader,
+      message: msg,
+      buttons: ['OK']
+    });
 
-   await alert.present();
- }
+    await alert.present();
+  }
 
 
  async submitForm(){

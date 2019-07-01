@@ -1,6 +1,8 @@
 {
-  "name": "NikitChemApp",
-  "integrations": {},
+  "name": "NikitChem ERP",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "b7206847"
 }

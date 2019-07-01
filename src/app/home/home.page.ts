@@ -9,11 +9,14 @@ import { AuthenticationService } from '../_services';
 })
 export class HomePage {
   public userprof;
+  loaded = false;
+  skeleton_arr = [1,1,1,1,1,1,1,1,1,1,1,1];
   constructor(public menu: MenuController,
               private authenticationService: AuthenticationService,
     ) {
     this.authenticationService.CurrentUserProfile.subscribe( value => {
       this.userprof=value?value:{};
+      this.loaded=true;
     });
   }
 
