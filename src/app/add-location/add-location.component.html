@@ -1,0 +1,30 @@
+
+<ion-card>
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>Add new Location</ion-label>
+    </ion-item>
+  
+    <ion-card-content>
+        <form class="vldform vldauth" [formGroup]="myform">
+      
+            <ion-item>
+              <ion-label  position="floating">Location Name</ion-label>
+              <ion-input type="text" formControlName="location_name" placeholder="Eg. Jalandhar" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Active Status</ion-label>
+                <ion-select value="" okText="Select" cancelText="Dismiss" formControlName="is_active">
+                  <ion-select-option value="1" selected>In Service</ion-select-option>
+                  <ion-select-option value="0">Out of Service</ion-select-option>
+                </ion-select>
+            </ion-item>
+      
+            <input class="vldform__button" type="submit" (click)="submitForm()" value="Save">
+      
+          </form>
+    </ion-card-content>
+  </ion-card>
+
+  

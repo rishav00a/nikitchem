@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL:"https://api.nikitchem.in/"
+  apiURL:"http://127.0.0.1:8000/"
 };
 
 /*

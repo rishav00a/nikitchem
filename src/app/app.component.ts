@@ -3,7 +3,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthenticationService } from './_services';
-import { Events } from '@ionic/angular';
+import { Events,AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +26,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authenticationService: AuthenticationService,
     public events: Events,
+    public alertController: AlertController
 
   ) {
     this.initializeApp();
@@ -36,7 +37,8 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
+      this.statusBar.backgroundColorByHexString('#072e42');
       this.splashScreen.hide();
     });
 
@@ -46,7 +48,32 @@ export class AppComponent {
     );
   }
 
-  logout(){
-    this.authenticationService.logout();
+  async logout(){
+
+    const alert = await this.alertController.create({
+      header: 'Logout!',
+      message: 'Are you sure you want to <strong>Logout</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            console.log('Logged Out');
+            this.authenticationService.logout();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    
   }
+
+  
 }

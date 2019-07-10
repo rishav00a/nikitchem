@@ -1,0 +1,45 @@
+<ion-card *ngFor="let item of listdata">
+    <ion-item>
+        <ion-thumbnail slot="start">
+        <ion-img [src]="item.profile_pic"></ion-img>
+       
+         </ion-thumbnail>
+        <ion-card-title>{{item.user_first_name}} {{item.user_last_name}}</ion-card-title>
+        <ion-icon  color="success" name='md-checkmark-circle-outline' slot="end" *ngIf="item.is_active"></ion-icon>
+        <ion-icon  color="danger" name='ios-close-circle-outline' slot="end" *ngIf="!item.is_active"></ion-icon>
+        
+    </ion-item>
+    <ion-item>
+            <ion-row>
+                   
+                            <ion-button fill="outline" [href]="'tel:'+item.mobile_no">
+                                <ion-icon name="call"></ion-icon>
+                                <ion-card-subtitle>{{item.mobile_no}}</ion-card-subtitle>
+
+                                
+                            </ion-button>
+                    
+                        <ion-button fill="outline" color="success" *ngIf="item.whats_app" [href]="'https://api.whatsapp.com/send?phone='+item.whats_app">
+                            <ion-icon name="logo-whatsapp"></ion-icon>
+                            <ion-card-subtitle>{{item.whats_app}}</ion-card-subtitle>
+                        </ion-button>
+
+                        <ion-button fill="outline" color="tertiary" *ngIf="item.user_email" [href]="'mailto:'+item.user_email">
+                            <ion-icon name="mail"></ion-icon>
+                            <ion-card-subtitle>{{item.user_email|lowercase}}</ion-card-subtitle>
+                        </ion-button>
+                    
+                    
+                          
+            </ion-row>
+        
+    </ion-item>
+    <ion-item *ngIf="item.assigned_location.length > 0">
+            
+            <ion-chip *ngFor="let loc of item.assigned_location">
+                <ion-icon name="pin" color="primary"></ion-icon>
+                <ion-label>{{loc.location}}</ion-label>
+            </ion-chip>
+    </ion-item>
+</ion-card>
+

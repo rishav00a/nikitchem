@@ -12,6 +12,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProfileModule } from './profile/profile.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { IonicSelectableModule } from 'ionic-selectable';
+
 
 @NgModule({
   declarations: [AppComponent, ],
@@ -21,7 +24,9 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ProfileModule
+    ProfileModule,
+    IonicSelectableModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

@@ -4,17 +4,27 @@
 /** Ionic CSS Variables **/
 :root {
   
-  --ion-background-color:linear-gradient(#263238, #263238);
+  --ion-background-color:#729CA3;
   ion-content *{
-    --ion-background-color:#ffffff;
+    --ion-background-color:#EBF3F5; 
+    
   }
-  ion-header *{
-    --ion-background-color:#072e42;
+
+  ion-searchbar *{
+    background: #fff !important;
   }
+  ion-content{
+    color:#fff;
+  }
+  ion-header {
+    --ion-background-color:#5C7789;
+  }
+
+  // --ion-color-light: #072e42;
   
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #5C7789;
+  --ion-color-primary-rgb: 4, 82, 121;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
@@ -29,7 +39,7 @@
   --ion-color-secondary-tint: #24d6ea;
 
   /** tertiary **/
-  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary: #FF7572;
   --ion-color-tertiary-rgb: 112, 68, 255;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
@@ -91,3 +101,11 @@ $grid-breakpoints: (
  md: 768px, // Tablet vertical (768px - 991px)
  lg: 992px // Tablet horizontal, Desktop (992px and above)
 );
+
+$toolbar-md-title-text-color: white;
+
+$refresher-icon-color: white;
+$refresher-icon-font-size: 10px;
+$refresher-text-color: white;
+$refresher-text-font-size: 10px;
+$refresher-border-color: white;

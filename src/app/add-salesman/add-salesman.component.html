@@ -1,0 +1,47 @@
+<ion-card>
+    <ion-item>
+      <ion-icon name="md-person-add" slot="start"></ion-icon>
+      <ion-label>Add new Salesman</ion-label>
+    </ion-item>
+  
+    <ion-card-content>
+        <form class="vldform vldauth" [formGroup]="myform">
+      
+            <ion-item>
+              <ion-label  position="floating">Name</ion-label>
+              <ion-input type="text" formControlName="name" placeholder="Eg. Rishav Sinha" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label  position="floating">Mobile No.</ion-label>
+              <ion-input type="number" formControlName="mobile_no" placeholder="Eg. 9876543210" required></ion-input>
+            </ion-item>
+
+            <ion-item> 
+              <ion-label  position="floating">E-Mail</ion-label>
+              <ion-input type="email" formControlName="email" placeholder="Eg. abc@xyz.com" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Assign Location</ion-label>
+                
+            
+
+              <ionic-selectable
+              formControlName="location"
+                headerColor="primary"
+                [isMultiple]="true"
+                [(ngModel)]="port"
+                [items]="location_options"
+                itemValueField="pk"
+                itemTextField="location_name"
+                [canSearch]="true"
+                (onChange)="portChange($event)">
+              </ionic-selectable>
+            </ion-item>
+      
+            <input class="vldform__button" type="submit" (click)="submitForm()" value="Save">
+      
+          </form>
+    </ion-card-content>
+  </ion-card>

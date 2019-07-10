@@ -8,19 +8,18 @@ ion-label{
   padding:0px
 }
 
+ion-card-content{
+    background: #EBF3F5;
+}
 .vldform {
     box-sizing: border-box;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 15px 15px;
     font-family: "Nunito Sans";
     animation: a .5s;
     animation-fill-mode: forwards;
-    border: #d4d4d4 1px solid;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
-    background: #fff;
 }
 
 .vldform a {
@@ -65,7 +64,7 @@ ion-label{
     border: 0;
     color: #fff;
     border-radius: 10px;
-    background-image: linear-gradient(#315591, #51A0E5);
+    background: #5C7789;
     font-size: 22px;
     font-weight: 600;
     font-family: "Nunito Sans";
