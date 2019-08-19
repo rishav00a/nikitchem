@@ -63,6 +63,7 @@ export class AddLocationComponent implements OnInit {
               this.storageService.announceUpdate();  
               loading.dismiss(); 
               this.presentAlert("Sucess!!!","Data Submitted Successfully","");
+
               this.navCtrl.pop();
             }
           );

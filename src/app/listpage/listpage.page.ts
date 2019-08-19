@@ -60,9 +60,9 @@ export class ListpagePage implements OnInit {
     this.storageService.getItems(this.listpagedetails.storage_key).then(items => {
       this.listdata = items;
       this.createComponent(this.listdata);
-      // if(this.api_called && (!this.listdata || this.listdata.length==0 )){
-      //   this.initItemss();
-      // }
+      if(!this.api_called && (!this.listdata || this.listdata.length==0 )){
+        this.initItemss();
+      }
     });
   }
 

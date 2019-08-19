@@ -35,11 +35,20 @@
         
     </ion-item>
     <ion-item *ngIf="item.assigned_location.length > 0">
+
+            <ion-grid>
+                    <ion-row>
+                      <ion-col size="6" size-sm *ngFor="let loc of item.assigned_location">
+                        <ion-chip>
+                                <ion-icon name="pin" color="primary"></ion-icon>
+                                <ion-label>{{loc.location}}</ion-label>
+                            </ion-chip>
+                      </ion-col>
+                     
+                    </ion-row>
+                  </ion-grid>
             
-            <ion-chip *ngFor="let loc of item.assigned_location">
-                <ion-icon name="pin" color="primary"></ion-icon>
-                <ion-label>{{loc.location}}</ion-label>
-            </ion-chip>
+           
     </ion-item>
 </ion-card>
 
