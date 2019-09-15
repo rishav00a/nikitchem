@@ -5,12 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../_guards';
 import { HomePage } from './home.page';
-
+import { BeatPlanModule } from '../beat-plan/beat-plan.module' 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    BeatPlanModule,
     RouterModule.forChild([
       {
         path: '',

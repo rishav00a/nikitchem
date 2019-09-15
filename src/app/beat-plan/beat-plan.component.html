@@ -1,0 +1,54 @@
+
+    <ion-card>
+    <ion-item-divider>
+
+        <ion-row>
+                    <ionic-selectable
+                        #cityList [hidden]='showList' 
+                        [(ngModel)]="port"
+                        [items]="ports"
+                        itemValueField="id"
+                        itemTextField="location_name"
+                        [canSearch]="true"
+                        (onChange)="portChange($event)">
+                    </ionic-selectable>
+            <ion-col size="3">
+                <ion-icon name="bicycle" class="icon-60"></ion-icon>
+            </ion-col>
+            <ion-col>
+               <ion-row>
+                   <ion-col size="6" *ngFor="let bp of beatplandata">
+                    <ion-chip color="secondary" outline="true">
+                        <ion-icon name="pin"></ion-icon>
+                        <ion-label>{{bp.location_name}}</ion-label>
+                    </ion-chip>                   
+                   </ion-col>
+
+                   <ion-col size="6" *ngFor="let bp of selectedbeatplandata">
+                        <ion-chip color="secondary" outline="true" (click)='deleteCity(bp)'>
+                            <ion-label>{{bp.location_name}}</ion-label>
+                            <ion-icon name="close-circle"></ion-icon>
+                        </ion-chip>                   
+                       </ion-col>
+                   
+                   <ion-col size="6" *ngFor="let bp of createRange(4-(beatplandata.length+selectedbeatplandata.length));">
+                    <ion-chip color="secondary" outline="true" (click)='displayCities()'>
+                        <ion-icon name="add"></ion-icon>
+                        <ion-label>Add</ion-label>
+                    </ion-chip>                   
+                   </ion-col>
+               </ion-row>
+               
+            </ion-col>
+        </ion-row>
+    </ion-item-divider>
+    <ion-row>
+        <ion-col size="8">
+    Today's Beat Plan
+
+        </ion-col>
+        <ion-col *ngIf="selectedbeatplandata.length">
+            <ion-button size="small" (click)="updateBeatPlan()">Update</ion-button>
+        </ion-col>
+    </ion-row>
+    </ion-card>

@@ -41,3 +41,28 @@ export class UserProfileInfo {
 export class BillEntryModel {
     ref_id:String;
 }
+
+export class ShopDetailModel{
+    pk:string;
+    image:string;
+    shop_name:string;
+    address:string;
+    pin:string;
+    city_name:string;
+    owner1:string;
+    owner2:string;
+    last_order:string;
+    phone:string;
+    email:string;
+    location:string;
+}
+
+export class Item{
+    pk:number;
+    description: string;
+    image: string;
+    minimum_quantity: number;
+    price: number;
+    title: string;
+    quantity:number;
+}

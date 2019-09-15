@@ -1,0 +1,36 @@
+
+.item_list{
+    background: transparent;
+}
+
+.green_border{
+    border-left: 3px solid green;
+}
+.itemcard{
+    padding:2px;
+}
+
+ion-content{
+    padding:0% !important;
+}
+.icon_tick{
+    position: absolute;
+    right: 0.5rem;
+}
+.item_price{
+    width: 100%;
+    text-align: right;
+}
+.addtional_data{
+    width: 100%;
+}
+.item_quantity{
+    width: 100%;
+    text-align: right;
+    vertical-align: center;
+}
+.input_quantity{
+    width: 100%;
+    height: 100%;
+    vertical-align: center;
+}

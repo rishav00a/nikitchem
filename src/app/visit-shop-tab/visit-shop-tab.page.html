@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar> 
+      <ion-buttons slot="start">
+        <ion-button (click)="location.back()" color="light">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button> 
+      </ion-buttons> 
+      <ion-buttons slot="end">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Visit Shops
+      </ion-title>
+      
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+        <ion-tabs color="primary">
+            <ion-tab-bar color="primary" slot="bottom">
+              <ion-tab-button tab="dealers">
+                <ion-icon name="ribbon"></ion-icon>
+                <ion-label>Dealers</ion-label>
+                <!-- <ion-badge color="secondary">6</ion-badge>                 -->
+              </ion-tab-button>
+          
+              <ion-tab-button tab="carpenters">
+                <ion-icon name="man"></ion-icon>
+                <ion-label>Carpenters</ion-label>
+                <!-- <ion-badge color="secondary">600</ion-badge> -->
+              </ion-tab-button>
+
+              <ion-tab-button tab="workshops">
+                <ion-icon name="hammer"></ion-icon>
+                <ion-label>Workshops</ion-label>
+                <!-- <ion-badge color="secondary">600</ion-badge> -->
+              </ion-tab-button>
+          
+              
+            </ion-tab-bar>
+          </ion-tabs>
+</ion-content>
+         
+          
+  
+    

@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar> 
+        <ion-buttons slot="start">
+          <ion-button (click)="location.back()" color="light">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button> 
+        </ion-buttons> 
+      <ion-buttons slot="end">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Add Workshop
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="main_card" color="light">
+    
+  
+        <ion-row class="content_grey">
+          <ion-col>
+              <ion-icon name="add-circle" class="icon-30"></ion-icon>
+          </ion-col>
+          <ion-col  size="10" class="text-20">
+              Add New Workshop
+          </ion-col>
+        </ion-row>
+        <div class="hr"></div>
+    
+          <form [formGroup]="addcwForm">
+              
+           
+            <ion-item color="light">
+              <ion-label position="floating">Name</ion-label>
+              <ion-input type="text" formControlName="owner_name"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Phone No.</ion-label>
+              <ion-input type="number" formControlName="phone"></ion-input>
+            </ion-item>
+            
+            <ion-item color="light">
+              <ion-label position="floating">City</ion-label>
+              <ion-select formControlName="city">
+                  <ion-select-option *ngFor="let loc of userprof.beat_plan" [value]="loc.id" >{{loc.location_name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Pin</ion-label>
+              <ion-input type="number" formControlName="pin"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Locality</ion-label>
+              <ion-input type="text" formControlName="locality"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Address</ion-label>
+              <ion-input type="text" formControlName="address"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Dealer</ion-label>
+              <ion-input type="text" formControlName="dealer_name"></ion-input>
+            </ion-item>
+            
+            <ion-item color="light">
+              <ion-label position="floating">Remarks</ion-label>
+              <ion-input type="text" formControlName="remarks"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Map Location</ion-label>
+              <ion-input type="text" formControlName="location" [(ngModel)]="map_location" readonly></ion-input>
+              <ion-button slot="end" (click)="getlocation()">Get Location</ion-button>
+            </ion-item>
+            <div class="hrmargin"></div>
+            <ion-button class="btn_submit" type="submit" color="primary" expand="block" (click)="addcwfn()">Submit</ion-button>
+                
+               
+          </form>
+        </ion-card>
+</ion-content>

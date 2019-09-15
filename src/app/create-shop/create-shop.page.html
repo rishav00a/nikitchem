@@ -1,0 +1,148 @@
+<ion-header>
+    <ion-toolbar> 
+        <ion-buttons slot="start">
+          <ion-button (click)="location.back()" color="light">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button> 
+        </ion-buttons> 
+      <ion-buttons slot="end">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Add Dealer
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-card class="main_card" color="light">
+    
+  
+      <ion-row class="content_grey">
+        <ion-col>
+            <ion-icon name="add-circle" class="icon-30"></ion-icon>
+        </ion-col>
+        <ion-col  size="9" class="text-20">
+            Add New Dealer
+        </ion-col>
+      </ion-row>
+      <div class="hr"></div>
+ 
+        <form [formGroup]="addshopForm">
+            <ion-item color="light">
+              <ion-label position="floating">Shop Name</ion-label>
+              <ion-input type="text" formControlName="shop_name"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Phone No.</ion-label>
+              <ion-input type="number" formControlName="phone"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Email Id.</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Owner 1</ion-label>
+              <ion-input type="text" formControlName="owner1"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Owner 2</ion-label>
+              <ion-input type="text" formControlName="owner2"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Address</ion-label>
+              <ion-input type="text" formControlName="address"></ion-input>
+            </ion-item>
+            
+            <ion-item color="light">
+              <ion-label position="floating">City</ion-label>
+              <ion-select formControlName="city">
+                  <ion-select-option *ngFor="let loc of userprof.beat_plan" [value]="loc.id" >{{loc.location_name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Pincode</ion-label>
+              <ion-input type="number" formControlName="pin"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Locality</ion-label>
+              <ion-input type="text" formControlName="locality"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Remarks</ion-label>
+              <ion-input type="text" formControlName="remarks"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Map Location</ion-label>
+              <ion-input type="text" formControlName="location" [(ngModel)]="map_location" readonly></ion-input>
+              <ion-button slot="end" (click)="getlocation()">Get Location</ion-button>
+            </ion-item>
+
+            <ion-toolbar color="light">
+              <ion-buttons>
+                
+                <ion-button icon-left (click)="captureImage(false,0)" class="btn btn-info btn-sm">
+                  <ion-icon name="camera"></ion-icon> Store Front Image
+                </ion-button>
+                <ion-button icon-left (click)="removePic(0)" [disabled]="uploadImagefront === null" class="btn btn-danger btn-sm" slot="end">
+                  <ion-icon name="trash"></ion-icon> Remove
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <span *ngIf="uploadImagefront != null">
+              <img id="checkinImage" class="selectedimage" width="100px" [src]="uploadImagefront" (load)="imageLoaded(0)" /> 
+            </span>
+            <span *ngIf="processing0">
+                <ion-spinner></ion-spinner>
+                <h1>Processing...</h1>
+            </span>
+
+
+
+            <ion-toolbar color="light">
+                <ion-buttons>
+                  
+                  <ion-button icon-left (click)="captureImage(false,1)" class="btn btn-info btn-sm">
+                    <ion-icon name="camera"></ion-icon> Other Image
+                  </ion-button>
+                  <ion-button icon-left (click)="removePic(1)" [disabled]="uploadImage1 === null" class="btn btn-danger btn-sm" slot="end">
+                    <ion-icon name="trash"></ion-icon> Remove
+                  </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+            <span *ngIf="uploadImage1 != null">
+              <img id="checkinImage1" class="selectedimage" width="100px" [src]="uploadImage1" (load)="imageLoaded(1)" /> 
+            </span>
+            <span *ngIf="processing1">
+                <ion-spinner></ion-spinner>
+                <h1>Processing...</h1>
+            </span>
+
+            <ion-toolbar color="light">
+                <ion-buttons>
+                  
+                  <ion-button icon-left (click)="captureImage(false,2)" class="btn btn-info btn-sm">
+                    <ion-icon name="camera"></ion-icon> Other Image
+                  </ion-button>
+                  <ion-button icon-left (click)="removePic(2)" [disabled]="uploadImage2 === null" class="btn btn-danger btn-sm" slot="end">
+                    <ion-icon name="trash"></ion-icon> Remove
+                  </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+            <span *ngIf="uploadImage2 != null">
+              <img id="checkinImage2" class="selectedimage" width="100px" [src]="uploadImage2" (load)="imageLoaded(2)" /> 
+            </span>
+            <span *ngIf="processing2">
+                <ion-spinner></ion-spinner>
+                <h1>Processing...</h1>
+            </span>
+            <div class="hrmargin"></div>
+            
+              <ion-button class="btn_submit" type="submit" color="primary" expand="block" (click)="addshopfn()">Submit</ion-button>
+            
+           
+            
+        </form>
+  </ion-card>
+
+</ion-content>

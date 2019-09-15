@@ -32,5 +32,9 @@ export class ApiService {
     public getOption(url): Observable<any[]> {
       return this.http.get<any[]>(API_URL + url);
     }
+    public postForm(url,formbody): Observable<any[]> {
+      console.log("postform")
+      return this.http.post<any[]>(API_URL + url,formbody);
+    }
 }
 

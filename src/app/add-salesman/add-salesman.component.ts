@@ -71,7 +71,7 @@ export class AddSalesmanComponent implements OnInit {
 
     await alert.present();
   }
-
+ 
   async submitForm(){
     const loading = await this.loadingController.create({
       message: 'Uploadind Data...',

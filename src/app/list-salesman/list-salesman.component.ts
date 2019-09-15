@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./list-salesman.component.scss'],
 })
 export class ListSalesmanComponent implements OnInit {
-  @Input() listdata: any;
+  @Input() listdata: any; 
 
   constructor() { }
 

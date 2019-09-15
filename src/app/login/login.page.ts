@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
@@ -11,7 +13,6 @@ import { LoadingController, ToastController,Events } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   loginForm: FormGroup;
     public user: any;
     public nextURL = "/dashboard/";
@@ -85,6 +86,7 @@ export class LoginPage implements OnInit {
                     });
                   },
                   error => {
+                    console.log(error);
                     loading.dismiss();
                     this.presentToast("Some Error Occured !!!");
                       this.error = error;
@@ -92,6 +94,7 @@ export class LoginPage implements OnInit {
                 );
               },
               error => {
+                console.log(error);
                 loading.dismiss();
                 this.presentToast("Incorrect User or Password");
                   this.error = error;

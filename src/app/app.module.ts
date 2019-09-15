@@ -15,9 +15,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicSelectableModule } from 'ionic-selectable';
 
-
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent,],
   entryComponents: [],
   imports: [
     BrowserModule,

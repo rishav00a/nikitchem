@@ -1,0 +1,39 @@
+ion-list {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+    color: white; 
+    padding: 2%;
+}
+ion-item{
+ border-radius: 20px !important;
+}
+
+.shop_image{
+   width: 100%;
+   border-radius: 10px;
+   height: 100%;
+}
+.shop_card{
+    padding: 0.5%;
+}
+.shop_name{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(39, 37, 37);
+    font-size: 20px;
+}
+.shop_city{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(39, 37, 37);
+    font-size: 16px;
+}
+.button-wp {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0%;
+}
+.rounded-searchbar{
+    
+    padding-left: 0.5%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+
+}

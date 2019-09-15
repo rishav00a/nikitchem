@@ -13,7 +13,9 @@
 ion-title{
     color: white;
 }
-
+.bgwhite{
+    background: white;
+}
 
 .picker-md .picker-prefix,
 .picker-md .picker-suffix,
@@ -36,4 +38,92 @@ color: #fff;
 
 .corsor_pointer:hover{
     cursor: pointer;
+}
+
+ion-fab{
+    outline: none;
+}
+.padding_o{
+    padding: 0%;
+}
+
+.icon-30{
+    font-size: 30px
+  }
+  .icon-15{
+    font-size: 15px
+  }
+  .icon-25{
+    font-size: 25px
+  }
+
+.margin-30{
+    margin-bottom: 30px;
+}
+.margin-10{
+    margin-bottom: 10px;
+}
+.padding-30{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.tool_bar_col{
+    padding: 0% !important;
+    margin: 0% !important;
+    width: 100% !important;
+}
+.tool_bar_btn{
+    
+    padding-top: 0.5% !important;
+    padding-bottom: 0.5% !important;
+}
+.filter_row{
+    width: 100%;
+    padding: 0%;
+}
+.filter_col{
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+ion-col{
+    outline: none;
+}
+.shop_detail_name{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(39, 37, 37);
+    font-size: 30px;
+    padding: auto;
+    text-align:center;
+}
+
+.shop_detail_address{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(39, 37, 37);
+    font-size: 17px;
+    padding: auto;
+    text-align:center;
+}
+
+.shop_detail_city{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(39, 37, 37);
+    font-size: 21px;
+    padding: auto;
+    text-align:center;
+}
+.icon_col{
+    align-items: center;
+    text-align: center;
+}
+.align_center{
+    align-items: center;
+    text-align: center;
+}
+.align_left{
+    text-align: left;
+}
+.itemcol{
+    max-width: 100%;
+    width: 100%;
 }
