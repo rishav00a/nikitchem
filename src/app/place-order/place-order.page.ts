@@ -4,7 +4,7 @@ import {ApiService} from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, ToastController,Events,ActionSheetController, AlertController,IonSelect, NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Router } from '@angular/router';
 import { IonicSelectableComponent } from 'ionic-selectable';
@@ -41,7 +41,7 @@ export class PlaceOrderPage implements OnInit {
   public location_fetched:boolean=false;
   public uploadImagefront;
   public uploadImage1;
-  processing0:boolean;
+  processing0:boolean; 
   processing1:boolean;
   
   public file0;
@@ -71,10 +71,8 @@ export class PlaceOrderPage implements OnInit {
 
 
   async ngOnInit() {
-    console.log("there");
     this.cartservices.currentcartSubject.subscribe(
       data=>{
-        console.log("there");
         this.selected_item = data;
       }
     )
@@ -127,7 +125,7 @@ export class PlaceOrderPage implements OnInit {
     this.selected_item.splice(index, 1);
     this.total_amount = this.total_amount - itm.price*itm.quantity;
     this.cartservices.setCartData(this.selected_item);
-  }
+  } 
 
   async placeOrderFn(){
     this.placeForm.value.location = this.map_location; 

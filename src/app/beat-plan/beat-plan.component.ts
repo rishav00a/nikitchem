@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Platform, Events, IonSelect, LoadingController, AlertController } from '@ionic/angular';
-import { IonicSelectableComponent } from 'ionic-selectable';
+import { IonicSelectableComponent } from 'ionic-selectable'; 
 import {ApiService} from '../api.service';
 import { AuthenticationService } from '../_services';
+import { Router } from '@angular/router';
 
 class Port {
   public id: number;
@@ -19,6 +20,7 @@ export class BeatPlanComponent implements OnInit {
   constructor(private _apiservice: ApiService,
               public loadingController: LoadingController,
               public alertController: AlertController,
+              private router: Router,
               public authenticationService:AuthenticationService){
   }
   @Input() beatplandata: any; @Input() userprof: any; 
@@ -97,6 +99,10 @@ export class BeatPlanComponent implements OnInit {
        items.push(i);
     }
     return items;
+  }
+
+  navigateTo(id){
+    this.router.navigate(['/visit_shop_tab'], { queryParams: { city_id: id } });
   }
 
 }

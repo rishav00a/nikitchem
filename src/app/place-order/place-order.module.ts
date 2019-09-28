@@ -46,6 +46,6 @@ const routes: Routes = [
   providers:[
               Camera,
               Geolocation
-  ]
+  ] 
 })
 export class PlaceOrderPageModule {}

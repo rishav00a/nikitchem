@@ -9,11 +9,87 @@
         <ion-menu-button color="light"></ion-menu-button>
       </ion-buttons>
       <ion-title>
-        Log Reason
+        Order Not Placed
       </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card class="main_card" color="light">
+    <ion-row class="content_grey" color="light">
+      <ion-col>
+          <ion-icon name="close-circle" class="icon-30"></ion-icon>
+      </ion-col>
+      <ion-col size="9" class="text-20">
+        Order Not Placed
+      </ion-col>
+    </ion-row>
+  
+    <div class="hr"></div>
+   
+    <form [formGroup]="onpForm">
 
+        <ion-item color="light">
+          <ion-label position="floating">Shop Name</ion-label>
+          <ion-input [value]="shop_detail.shop_name" readonly></ion-input>
+        </ion-item>
+
+        <ion-item color="light">
+          <ion-label position="floating">Remarks</ion-label>
+          <ion-input type="text" formControlName="remarks"></ion-input>
+        </ion-item>
+        <ion-item color="light">
+            <ion-label position="floating">Map Location</ion-label>
+            <ion-input type="text" formControlName="location" [(ngModel)]="map_location" readonly></ion-input>
+            <ion-button slot="end" (click)="getlocation()">Get Location</ion-button>
+          </ion-item>
+        
+
+        
+         
+          
+          
+
+        
+
+        <ion-toolbar color="light">
+            <ion-buttons>
+              
+              <ion-button icon-left (click)="captureImage(false,0)" class="btn btn-info btn-sm">
+                <ion-icon name="camera"></ion-icon> Store Front Image
+              </ion-button>
+              <ion-button icon-left (click)="removePic(0)" [disabled]="uploadImagefront === null" class="btn btn-danger btn-sm" slot="end">
+                <ion-icon name="trash"></ion-icon> Remove
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <span *ngIf="uploadImagefront != null">
+            <img id="checkinImage" class="selectedimage" width="100px" [src]="uploadImagefront" (load)="imageLoaded(0)" /> 
+          </span>
+          <span *ngIf="processing0">
+              <ion-spinner></ion-spinner>
+              <h1>Processing...</h1>
+          </span>
+          <ion-toolbar color="light">
+              <ion-buttons>
+                
+                <ion-button icon-left (click)="captureImage(false,1)" class="btn btn-info btn-sm">
+                  <ion-icon name="camera"></ion-icon> Self Image
+                </ion-button>
+                <ion-button icon-left (click)="removePic(1)" [disabled]="uploadImage1 === null" class="btn btn-danger btn-sm" slot="end">
+                  <ion-icon name="trash"></ion-icon> Remove
+                </ion-button>
+              </ion-buttons>
+          </ion-toolbar>
+          <span *ngIf="uploadImage1 != null">
+            <img id="checkinImage1" class="selectedimage" width="100px" [src]="uploadImage1" (load)="imageLoaded(1)" /> 
+          </span>
+          <span *ngIf="processing1">
+              <ion-spinner></ion-spinner>
+              <h1>Processing...</h1>
+          </span>
+        <div class="hrmargin"></div>
+        <ion-button class="btn_submit" type="submit" color="primary" expand="block" (click)="onpSubmit()">Submit</ion-button> 
+      </form>
+  </ion-card>
 </ion-content>

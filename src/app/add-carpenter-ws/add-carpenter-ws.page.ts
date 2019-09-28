@@ -5,6 +5,8 @@ import { AuthenticationService } from '../_services';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoadingController, ToastController,Events,NavController, AlertController, Platform, ActionSheetController } from '@ionic/angular';
 import {ApiService} from '../api.service';
+import { ShopDetailModel } from '../_models';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
   selector: 'app-add-carpenter-ws',
@@ -16,7 +18,8 @@ export class AddCarpenterWsPage implements OnInit {
   public userprof;
   public map_location = 'Not Fetched';
   public location_fetched:boolean=false; 
-
+  public dealers_list:ShopDetailModel[];
+  public selected_dealer:ShopDetailModel;
 
   constructor(
     public loadingController: LoadingController,
@@ -27,13 +30,13 @@ export class AddCarpenterWsPage implements OnInit {
     private authenticationService: AuthenticationService,
     private navCtrl:NavController,
     private _apiservice: ApiService,
+    public dealer_model:ShopDetailModel,    
+
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.addcwForm = this._formBuilder.group({
-      shop_name: ['',],
-      shop_type:['', [Validators.required,]],
-      owner_name:['', [Validators.required,]],
+      name:['', [Validators.required,]],
       phone:['', [Validators.required,]],
       email:['',],
       city:['', [Validators.required,]],
@@ -43,10 +46,19 @@ export class AddCarpenterWsPage implements OnInit {
       location:['', [Validators.required,]],
       remarks:['', ],
       dealer_name:['', [Validators.required,]],
-      dealer_address:['', [Validators.required,]]
     });
     this.authenticationService.CurrentUserProfile.subscribe( value => {
       this.userprof=value?value:{};
+    });
+    const loading = await this.loadingController.create({
+      message: 'Please Wait',
+      duration: 20000
+    });
+
+    await loading.present();
+    this._apiservice.getOption("api/sales/get_all_dealers").subscribe(data=>{
+      this.dealers_list = data;
+      loading.dismiss();
     });
   }
 
@@ -81,6 +93,8 @@ export class AddCarpenterWsPage implements OnInit {
   }
   async addcwfn(){
     this.addcwForm.value.location = this.map_location;
+    this.addcwForm.value.dealer_name = this.selected_dealer.pk;
+
     if(! this.location_fetched){
       this.presentAlert("Oops!!!","Please fetch the location","");
     }
@@ -94,10 +108,10 @@ export class AddCarpenterWsPage implements OnInit {
       });
 
       await loading.present();
-      this._apiservice.postForm("api/sales/add_cw",this.addcwForm.value)
+      this._apiservice.postForm("api/sales/add_carpenter",this.addcwForm.value)
         .subscribe(data => { 
               loading.dismiss(); 
-              this.presentAlert("Sucess!!!",this.addcwForm.value["shop_type"]+" Added Successfully","");
+              this.presentAlert("Sucess!!!","Carpenter Added Successfully","");
               this.location.back();
               
         },
@@ -109,5 +123,11 @@ export class AddCarpenterWsPage implements OnInit {
     }
   }
 
+  dealerChange(event: {
+    component: IonicSelectableComponent,
+    value: any 
+  }){
+    this.selected_dealer = event.value;
+  }
 
 }

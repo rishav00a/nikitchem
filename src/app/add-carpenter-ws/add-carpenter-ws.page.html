@@ -33,7 +33,7 @@
        
         <ion-item color="light">
           <ion-label position="floating">Name</ion-label>
-          <ion-input type="text" formControlName="owner_name"></ion-input>
+          <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
         <ion-item color="light">
           <ion-label position="floating">Phone No.</ion-label>
@@ -59,8 +59,17 @@
           <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
         <ion-item color="light">
-          <ion-label position="floating">Dealer</ion-label>
-          <ion-input type="text" formControlName="dealer_name"></ion-input>
+          <ion-label position="floating">Select Dealer</ion-label>
+          <ionic-selectable
+                    #dealersList
+                    [(ngModel)]="dealer_model"
+                    [items]="dealers_list"
+                    itemValueField="pk"
+                    itemTextField="shop_name"
+                    formControlName="dealer_name"
+                    [canSearch]="true"
+                    (onChange)="dealerChange($event)">
+                </ionic-selectable>
         </ion-item>
         
         <ion-item color="light">

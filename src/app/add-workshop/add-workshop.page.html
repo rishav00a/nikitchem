@@ -32,7 +32,11 @@
               
            
             <ion-item color="light">
-              <ion-label position="floating">Name</ion-label>
+              <ion-label position="floating">Workshop Name</ion-label>
+              <ion-input type="text" formControlName="shop_name"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="floating">Owner Name</ion-label>
               <ion-input type="text" formControlName="owner_name"></ion-input>
             </ion-item>
             <ion-item color="light">
@@ -46,7 +50,7 @@
                   <ion-select-option *ngFor="let loc of userprof.beat_plan" [value]="loc.id" >{{loc.location_name}}</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item color="light">
+            <ion-item color="light"> 
               <ion-label position="floating">Pin</ion-label>
               <ion-input type="number" formControlName="pin"></ion-input>
             </ion-item>
@@ -59,8 +63,17 @@
               <ion-input type="text" formControlName="address"></ion-input>
             </ion-item>
             <ion-item color="light">
-              <ion-label position="floating">Dealer</ion-label>
-              <ion-input type="text" formControlName="dealer_name"></ion-input>
+              <ion-label position="floating">Select Dealer</ion-label>
+              <ionic-selectable
+                        #dealersList
+                        [(ngModel)]="dealer_model"
+                        [items]="dealers_list"
+                        itemValueField="pk"
+                        itemTextField="shop_name"
+                        formControlName="dealer_name"
+                        [canSearch]="true"
+                        (onChange)="dealerChange($event)">
+                    </ionic-selectable>
             </ion-item>
             
             <ion-item color="light">
@@ -73,7 +86,7 @@
               <ion-button slot="end" (click)="getlocation()">Get Location</ion-button>
             </ion-item>
             <div class="hrmargin"></div>
-            <ion-button class="btn_submit" type="submit" color="primary" expand="block" (click)="addcwfn()">Submit</ion-button>
+            <ion-button class="btn_submit" type="submit" color="primary" expand="block" (click)="addwsfn()">Submit</ion-button>
                 
                
           </form>

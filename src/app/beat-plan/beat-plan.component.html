@@ -18,7 +18,7 @@
             <ion-col>
                <ion-row>
                    <ion-col size="6" *ngFor="let bp of beatplandata">
-                    <ion-chip color="secondary" outline="true">
+                    <ion-chip color="secondary" outline="true" (click)="navigateTo(bp.id)">
                         <ion-icon name="pin"></ion-icon>
                         <ion-label>{{bp.location_name}}</ion-label>
                     </ion-chip>                   

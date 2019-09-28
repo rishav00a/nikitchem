@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { AddCarpenterWsPage } from './add-carpenter-ws.page';
 
+import { IonicSelectableModule } from 'ionic-selectable';
+import { ShopDetailModel } from '../_models';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,9 +23,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    IonicSelectableModule
   ],
   declarations: [AddCarpenterWsPage],
-  providers:[Geolocation,]
+  providers:[Geolocation,
+             ShopDetailModel]
 })
 export class AddCarpenterWsPageModule {}

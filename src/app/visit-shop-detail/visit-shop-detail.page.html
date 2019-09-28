@@ -72,11 +72,15 @@
           </ion-col>
         </ion-row>
         <div class="margin-30"></div>
+       
+        <ion-button class="btn_submit" color="success" expand="block" *ngIf="shop_detail.order_status==1">Order Placed</ion-button>
+        <ion-button class="btn_submit" color="danger" expand="block" *ngIf="shop_detail.order_status==2">Order Not Placed</ion-button>
+        
             
-        <ion-button class="btn_submit" type="submit" color="primary" expand="block" [routerLink]="['/place_order/'+shop_detail.pk]">Place Order</ion-button>
+        <ion-button class="btn_submit" type="submit" color="primary" expand="block" [routerLink]="['/place_order/'+shop_detail.pk]" *ngIf="! shop_detail.order_status">Place Order</ion-button>
         <div class="margin-10"></div>
         <div class="margin-10"></div>
-        <ion-button class="btn_submit" type="submit" color="danger" expand="block" [routerLink]="['/order_not_placed/'+shop_detail.pk]">Order Not Placed</ion-button>
+        <ion-button class="btn_submit" type="submit" color="danger" expand="block" [routerLink]="['/order_not_placed/'+shop_detail.pk]" *ngIf="! shop_detail.order_status">Order Not Placed</ion-button>
       
        
   </ion-card>
