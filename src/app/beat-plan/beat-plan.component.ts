@@ -29,6 +29,11 @@ export class BeatPlanComponent implements OnInit {
   ports: Port[];
   port: Port;
   selectedbeatplandata = [];
+  public dropdown_icons = ["arrow-dropright","arrow-dropdown"];
+  public beatplan_today_enabled=0;
+  public beatplan_tomorrow_enabled=0;
+
+
   portChange(event: {
     component: IonicSelectableComponent,
     value: any 
@@ -103,6 +108,24 @@ export class BeatPlanComponent implements OnInit {
 
   navigateTo(id){
     this.router.navigate(['/visit_shop_tab'], { queryParams: { city_id: id } });
+  }
+
+  dropbeatplantoday(){
+    if(this.beatplan_today_enabled==1){
+      this.beatplan_today_enabled = 0;
+    }
+    else{
+      this.beatplan_today_enabled=1;
+    }
+  }
+
+  dropbeatplantommorow(){
+    if(this.beatplan_tomorrow_enabled==1){
+      this.beatplan_tomorrow_enabled = 0;
+    }
+    else{
+      this.beatplan_tomorrow_enabled=1;
+    }
   }
 
 }

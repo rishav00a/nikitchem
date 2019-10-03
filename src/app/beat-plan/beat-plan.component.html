@@ -42,13 +42,52 @@
             </ion-col>
         </ion-row>
     </ion-item-divider>
-    <ion-row>
-        <ion-col size="8">
-    Today's Beat Plan
+    
+        <ion-row>
+            <ion-col size="8">
+            Today's Beat Plan
 
-        </ion-col>
-        <ion-col *ngIf="selectedbeatplandata.length">
-            <ion-button size="small" (click)="updateBeatPlan()">Update</ion-button>
-        </ion-col>
-    </ion-row>
+            </ion-col>
+            <ion-col *ngIf="selectedbeatplandata.length">
+                <ion-button size="small" (click)="updateBeatPlan()">Update</ion-button>
+            </ion-col>
+            <ion-col *ngIf="! selectedbeatplandata.length">
+                <ion-button float-right size="small" (click)="dropbeatplantoday()"fill="outline">
+                        <ion-icon [name]="dropdown_icons[beatplan_today_enabled]"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <div class="hr"></div>
+        
+    <ion-list *ngIf="beatplan_today_enabled">
+            <ion-item class="width-100" lines="full" *ngIf="! beatplandata.length">
+                <ion-label>Nothing to show...</ion-label>
+            </ion-item>
+        <ion-item class="width-100" lines="full" *ngFor="let bp of beatplandata" (click)="navigateTo(bp.id)">
+            <ion-label>{{bp.location_name}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-row>
+            <ion-col size="8">
+            Tomorrow's Beat Plan
+
+            </ion-col>
+           
+            <ion-col>
+                <ion-button float-right size="small" (click)="dropbeatplantommorow()"fill="outline">
+                        <ion-icon [name]="dropdown_icons[beatplan_tomorrow_enabled]"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <div class="hr"></div>
+        
+    <ion-list *ngIf="beatplan_tomorrow_enabled">
+        <ion-item class="width-100" lines="full" *ngIf="! userprof.beat_plan_locations_tomorrow.length">
+            <ion-label>Nothing to show...</ion-label>
+        </ion-item>
+        <ion-item class="width-100" lines="full" *ngFor="let bp of userprof.beat_plan_locations_tomorrow">
+            <ion-label>{{bp.location_name}}</ion-label>
+        </ion-item>
+    </ion-list>
     </ion-card>
