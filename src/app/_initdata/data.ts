@@ -11,5 +11,6 @@ export const shopdetailinitdata  = {
      phone   :"" ,
      email   :"" ,
      location   :"" ,
+     order_status:0
 
 }

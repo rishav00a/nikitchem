@@ -55,6 +55,8 @@ export class ShopDetailModel{
     phone:string;
     email:string;
     location:string;
+    order_status:number;
+
 }
 
 export class Item{
