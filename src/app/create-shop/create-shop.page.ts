@@ -9,6 +9,7 @@ import { File } from '@ionic-native/file/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthenticationService } from '../_services';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
   selector: 'app-create-shop',
@@ -20,6 +21,7 @@ export class CreateShopPage implements OnInit {
 
   public map_location = 'Not Fetched';
   public location_fetched:boolean=false; 
+  public map_location_str = 'Not Fetched';
 
   processing0:boolean;
   processing1:boolean;
@@ -45,7 +47,8 @@ export class CreateShopPage implements OnInit {
     private authenticationService: AuthenticationService,
     private navCtrl:NavController,
     private _apiservice: ApiService,
-    private router: Router,
+    private router: Router,    
+    private nativeGeocoder: NativeGeocoder
 
   ) { }
 
@@ -90,11 +93,28 @@ export class CreateShopPage implements OnInit {
       duration: 20000
     });
 
+    let options: NativeGeocoderOptions = {
+        useLocale: true,
+        maxResults: 5
+    };
+  
+
     await loading.present();
 
     this.geolocation.getCurrentPosition().then((resp) => {
       this.map_location=resp.coords.latitude+","+resp.coords.longitude;
-      loading.dismiss(); 
+
+      this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        loading.dismiss(); 
+        this.map_location_str = result[0]["areasOfInterest"]+" "+result[0]["locality"]+", "+result[0]["postalCode"];
+      })
+      .catch((error: any) => {
+        this.map_location_str="Unknown";
+        loading.dismiss(); 
+
+      });
+      
      }).catch((error) => {
       loading.dismiss(); 
       this.presentAlert("Oops!!!","Coudn't fetch location","");
@@ -102,6 +122,7 @@ export class CreateShopPage implements OnInit {
      });
      this.location_fetched=true;
   }
+
 
   async captureImage(useAlbum: boolean,index) {
     

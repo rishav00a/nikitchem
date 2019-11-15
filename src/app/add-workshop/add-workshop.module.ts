@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AddWorkshopPage } from './add-workshop.page';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ShopDetailModel } from '../_models'; 
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 const routes: Routes = [
   {
@@ -25,6 +26,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [AddWorkshopPage],
-  providers:[Geolocation,ShopDetailModel]
+  providers:[Geolocation,ShopDetailModel,NativeGeocoder]
 })
 export class AddWorkshopPageModule {}

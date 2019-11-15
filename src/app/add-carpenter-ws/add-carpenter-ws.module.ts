@@ -9,6 +9,7 @@ import { AddCarpenterWsPage } from './add-carpenter-ws.page';
 
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ShopDetailModel } from '../_models';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
   ],
   declarations: [AddCarpenterWsPage],
   providers:[Geolocation,
-             ShopDetailModel]
+             ShopDetailModel,
+             NativeGeocoder]
 })
 export class AddCarpenterWsPageModule {}

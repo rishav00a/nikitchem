@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -25,6 +26,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [CreateShopPage],
-  providers:[Geolocation,Camera]
+  providers:[Geolocation,Camera,NativeGeocoder]
 })
 export class CreateShopPageModule {}

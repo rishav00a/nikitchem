@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Router } from '@angular/router';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 class ShopDet {
   public shop_name:string;
@@ -34,6 +35,7 @@ export class OrderNotPlacedPage implements OnInit {
   
   public file0;
   public file1;
+  public map_location_str = 'Not Fetched';
 
 
   constructor(
@@ -46,6 +48,7 @@ export class OrderNotPlacedPage implements OnInit {
     private geolocation: Geolocation,   
     public alertController: AlertController,
     private camera: Camera, 
+    private nativeGeocoder: NativeGeocoder
 
   ) { }
 
@@ -91,11 +94,27 @@ export class OrderNotPlacedPage implements OnInit {
       duration: 20000
     });
 
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+  };
+
     await loading.present();
 
     this.geolocation.getCurrentPosition().then((resp) => {
       this.map_location=resp.coords.latitude+","+resp.coords.longitude;
-      loading.dismiss(); 
+
+      this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        loading.dismiss(); 
+        this.map_location_str = result[0]["areasOfInterest"]+" "+result[0]["locality"]+", "+result[0]["postalCode"];
+      })
+      .catch((error: any) => {
+        this.map_location_str="Unknown";
+        loading.dismiss(); 
+
+      });
+      
      }).catch((error) => {
       loading.dismiss(); 
       this.presentAlert("Oops!!!","Coudn't fetch location","");

@@ -11,6 +11,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { Observable } from 'rxjs/Rx';
 import {Item} from '../_models/index';
 import { CartService } from '../_services'
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 
 
@@ -38,6 +39,8 @@ export class PlaceOrderPage implements OnInit {
     shop_name:"",
   };
   public map_location = 'Not Fetched';
+  public map_location_str = 'Not Fetched';
+
   public location_fetched:boolean=false;
   public uploadImagefront;
   public uploadImage1;
@@ -64,9 +67,8 @@ export class PlaceOrderPage implements OnInit {
     public actionSheetController: ActionSheetController,
     private camera: Camera,
     public navCtrl:NavController,
-    private cartservices:CartService,
-
-
+    private cartservices:CartService, 
+    private nativeGeocoder: NativeGeocoder
   ) { }
 
 
@@ -181,11 +183,28 @@ export class PlaceOrderPage implements OnInit {
       duration: 20000
     });
 
+    let options: NativeGeocoderOptions = {
+        useLocale: true,
+        maxResults: 5
+    };
+  
+
     await loading.present();
 
     this.geolocation.getCurrentPosition().then((resp) => {
       this.map_location=resp.coords.latitude+","+resp.coords.longitude;
-      loading.dismiss(); 
+
+      this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        loading.dismiss(); 
+        this.map_location_str = result[0]["areasOfInterest"]+" "+result[0]["locality"]+", "+result[0]["postalCode"];
+      })
+      .catch((error: any) => {
+        this.map_location_str="Unknown";
+        loading.dismiss(); 
+
+      });
+      
      }).catch((error) => {
       loading.dismiss(); 
       this.presentAlert("Oops!!!","Coudn't fetch location","");

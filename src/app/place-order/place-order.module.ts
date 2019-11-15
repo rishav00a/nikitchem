@@ -9,18 +9,18 @@ import { IonicModule } from '@ionic/angular';
 
 import { PlaceOrderPage } from './place-order.page';
 import { IonicSelectableModule } from 'ionic-selectable';
-import { ProductListSelectPageModule } from '../product-list-select/product-list-select.module';
 import { ProductListSelectPage } from '../product-list-select/product-list-select.page';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: PlaceOrderPage,
   },
-  {
-    path: ':id/selectproducts',
-    component:ProductListSelectPage
+  // {
+  //   path: ':id/selectproducts',
+  //   component:ProductListSelectPage
     // children: [
     //   {
     //     path: '',
@@ -28,7 +28,7 @@ const routes: Routes = [
     //     data:null,
     //   },
     // ]
-  }
+  // }
   
 ];
 
@@ -39,13 +39,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     IonicModule,
     IonicSelectableModule,
-    ProductListSelectPageModule,
     RouterModule.forChild(routes)
   ],
   declarations: [PlaceOrderPage,],
   providers:[
               Camera,
-              Geolocation
+              Geolocation,
+              NativeGeocoder
   ] 
 })
 export class PlaceOrderPageModule {}

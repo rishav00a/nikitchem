@@ -7,6 +7,7 @@ import { LoadingController, ToastController,Events,NavController, AlertControlle
 import {ApiService} from '../api.service';
 import { ShopDetailModel } from '../_models';
 import { IonicSelectableComponent } from 'ionic-selectable';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
   selector: 'app-add-carpenter-ws',
@@ -17,6 +18,7 @@ export class AddCarpenterWsPage implements OnInit {
   addcwForm: FormGroup;
   public userprof;
   public map_location = 'Not Fetched';
+  public map_location_str = 'Not Fetched';
   public location_fetched:boolean=false; 
   public dealers_list:ShopDetailModel[];
   public selected_dealer:ShopDetailModel;
@@ -30,7 +32,8 @@ export class AddCarpenterWsPage implements OnInit {
     private authenticationService: AuthenticationService,
     private navCtrl:NavController,
     private _apiservice: ApiService,
-    public dealer_model:ShopDetailModel,    
+    public dealer_model:ShopDetailModel, 
+    private nativeGeocoder: NativeGeocoder
 
   ) { }
 
@@ -79,11 +82,28 @@ export class AddCarpenterWsPage implements OnInit {
       duration: 20000
     });
 
+    let options: NativeGeocoderOptions = {
+        useLocale: true,
+        maxResults: 5
+    };
+  
+
     await loading.present();
 
     this.geolocation.getCurrentPosition().then((resp) => {
       this.map_location=resp.coords.latitude+","+resp.coords.longitude;
-      loading.dismiss(); 
+
+      this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        loading.dismiss(); 
+        this.map_location_str = result[0]["areasOfInterest"]+" "+result[0]["locality"]+", "+result[0]["postalCode"];
+      })
+      .catch((error: any) => {
+        this.map_location_str="Unknown";
+        loading.dismiss(); 
+
+      });
+      
      }).catch((error) => {
       loading.dismiss(); 
       this.presentAlert("Oops!!!","Coudn't fetch location","");
